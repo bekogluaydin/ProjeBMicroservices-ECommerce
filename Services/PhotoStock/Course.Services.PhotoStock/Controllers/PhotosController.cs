@@ -1,4 +1,6 @@
-﻿using Course.Shared.ControllerBases;
+﻿using Course.Services.PhotoStock.Dtos;
+using Course.Shared.ControllerBases;
+using Course.Shared.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -27,8 +29,12 @@ namespace Course.Services.PhotoStock.Controllers
                 // http://technovadi.com/photos/myscherzo.png
                 var returnPath = "photos" + photo.FileName;
 
+                PhotoDto photoDto = new() { Url = returnPath };
 
+                return CreateActionResultInstance(Response<PhotoDto>.Success(photoDto, 200));
             }
+
+            return CreateActionResultInstance(Response<PhotoDto>.Fail("photo is empty", 400));
         }
     }
 }
