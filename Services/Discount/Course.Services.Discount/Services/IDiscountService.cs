@@ -13,7 +13,7 @@ namespace Course.Services.Discount.Services
         Task<Response<Models.Discount>> GettById(int id);
         Task<Response<NoContent>> Save(Models.Discount discount);
         Task<Response<NoContent>> Update(Models.Discount discount);
-        Task<Response<NoContent>> Delete(Models.Discount discount);
+        Task<Response<NoContent>> Delete(int id);
         Task<Response<Models.Discount>> GetByCodeAndUserId(string code, string userId);
     }
 }
