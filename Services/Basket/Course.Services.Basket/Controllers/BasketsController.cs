@@ -38,6 +38,7 @@ namespace Course.Services.Basket.Controllers
             return CreateActionResultInstance(response);
         }
 
+        [HttpDelete]
         public async Task<IActionResult> Delete()
         {
             return CreateActionResultInstance(await _basketService.Delete(_sharedIdentityService.GetUserId));
