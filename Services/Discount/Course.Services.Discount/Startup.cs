@@ -1,3 +1,5 @@
+using Course.Services.Discount.Services;
+using Course.Shared.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +40,9 @@ namespace Course.Services.Discount
                 options.RequireHttpsMetadata = false;
             });
 
+            services.AddHttpContextAccessor();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<IDiscountService, DiscountService>();
 
             services.AddControllers(opt=>
             {
