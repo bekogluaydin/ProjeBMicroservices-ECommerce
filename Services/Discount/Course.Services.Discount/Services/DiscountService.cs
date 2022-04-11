@@ -29,7 +29,7 @@ namespace Course.Services.Discount.Services
             return deleteStatus > 0 ? Response<NoContent>.Success(204) : Response<NoContent>.Fail("Discount not found", 404);
         }
 
-        public async Task<Response<Models.Discount>> GetByCodeAndUserId(string code, string userId)
+        public async Task<Response<List<Models.Discount>>> GetByCodeAndUserId(string code, string userId)
         {
             var discounts = await _dbConnection.QueryAsync<Models.Discount>("SELECT * from discount where userid=@UserId and code=@Code", new {
                 UserId=userId,
@@ -38,7 +38,7 @@ namespace Course.Services.Discount.Services
 
             var hasDiscount = discounts.FirstOrDefault();
 
-            return hasDiscount == null ? Response<Models.Discount>.Fail("Discount not found", 404) : Response<Models.Discount>.Success(200);
+            return hasDiscount == null ? Response<List<Models.Discount>>.Fail("Discount not found", 404) : Response<List<Models.Discount>>.Success(discounts.ToList(), 200);
         }
 
         public async Task<Response<List<Models.Discount>>> GettAll()
