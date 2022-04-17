@@ -16,7 +16,7 @@ namespace Course.Services.Catalog
     {
         public static void Main(string[] args)
         {
-          var host =  CreateHostBuilder(args).Build();
+            var host =  CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
             {
@@ -29,7 +29,9 @@ namespace Course.Services.Catalog
                     categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core Kursu" }).Wait();
                     categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core API Kursu" }).Wait();
                 }
-            }  
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
