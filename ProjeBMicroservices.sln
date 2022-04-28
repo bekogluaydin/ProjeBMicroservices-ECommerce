@@ -56,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Course.Gateway", "Gateways\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{A9C91163-BA8F-4E54-8084-1279DB410079}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.Web", "Frontends\Course.Web\Course.Web.csproj", "{5D6EE068-99FB-4352-8DEE-97D1C59DE258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Course.Web", "Frontends\Course.Web\Course.Web.csproj", "{5D6EE068-99FB-4352-8DEE-97D1C59DE258}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
