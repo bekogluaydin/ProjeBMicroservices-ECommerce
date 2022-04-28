@@ -1,4 +1,5 @@
-﻿using Course.Web.Models;
+﻿using Course.Web;
+using Course.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
