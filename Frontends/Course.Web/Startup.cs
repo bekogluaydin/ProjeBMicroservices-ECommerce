@@ -1,3 +1,4 @@
+using Course.Web.Handler;
 using Course.Web.Models;
 using Course.Web.Services;
 using Course.Web.Services.Interfaces;
@@ -34,10 +35,10 @@ namespace Course.Web
 
             services.AddHttpClient <IIdentityService,IdentityService>();
 
-            services.AddHttpClient<IUserService, UserService>(opt=> 
+            services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            });
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             
 
