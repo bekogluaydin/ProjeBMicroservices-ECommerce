@@ -31,8 +31,9 @@ namespace Course.Web
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
             services.AddHttpContextAccessor();
 
-            var serviceApiSettings = Configuration.GetSection("ServiceApiSetting").Get<ServiceApiSettings>();
+            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddHttpClient <IIdentityService,IdentityService>();
 
             services.AddHttpClient<IUserService, UserService>(opt =>
