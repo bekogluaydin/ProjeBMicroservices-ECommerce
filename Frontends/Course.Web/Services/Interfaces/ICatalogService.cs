@@ -10,10 +10,10 @@ namespace Course.Web.Services.Interfaces
     {
         Task<List<CourseViewModel>> GetAllCourseAysnc();
         Task<List<CategoryViewModel>> GettAllCategogoryAsync();
-        Task<List<CourseViewModel>> GetAllCourseByUserIdAysnc();
-        Task<List<CourseViewModel>> GetByCourseIdAsync();
+        Task<List<CourseViewModel>> GetAllCourseByUserIdAysnc(string userId);
+        Task<List<CourseViewModel>> GetByCourseIdAsync(string courseId);
         Task<bool> CreateCourseAsync(CourseCreateInput courseCreateInput);
         Task<bool> UpdateCourseAsync(CourseUpdateInput courseUpdateInput);
-        Task<List<CourseViewModel>> DeleteCourseAsync();
+        Task<List<CourseViewModel>> DeleteCourseAsync(string courserId);
     }
 }

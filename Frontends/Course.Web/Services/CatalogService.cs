@@ -23,7 +23,7 @@ namespace Course.Web.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<CourseViewModel>> DeleteCourseAsync()
+        public Task<List<CourseViewModel>> DeleteCourseAsync(string courserId)
         {
             throw new NotImplementedException();
         }
@@ -33,12 +33,12 @@ namespace Course.Web.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<CourseViewModel>> GetAllCourseByUserIdAysnc()
+        public Task<List<CourseViewModel>> GetAllCourseByUserIdAysnc(string userId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<CourseViewModel>> GetByCourseIdAsync()
+        public Task<List<CourseViewModel>> GetByCourseIdAsync(string courseId)
         {
             throw new NotImplementedException();
         }
