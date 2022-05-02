@@ -11,9 +11,9 @@ namespace Course.Web.Services.Interfaces
         Task<List<CourseViewModel>> GetAllCourseAysnc();
         Task<List<CategoryViewModel>> GettAllCategogoryAsync();
         Task<List<CourseViewModel>> GetAllCourseByUserIdAysnc(string userId);
-        Task<List<CourseViewModel>> GetByCourseIdAsync(string courseId);
+        Task<CourseViewModel> GetByCourseIdAsync(string courseId);
         Task<bool> CreateCourseAsync(CourseCreateInput courseCreateInput);
         Task<bool> UpdateCourseAsync(CourseUpdateInput courseUpdateInput);
-        Task<List<CourseViewModel>> DeleteCourseAsync(string courserId);
+        Task<bool> DeleteCourseAsync(string courseId);
     }
 }
