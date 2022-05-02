@@ -7,15 +7,15 @@ namespace Course.Shared.Dtos
 {
     public class Response<T>
     {
-        public T Data { get; private set; }
+        public T Data { get; set; }
 
         [JsonIgnore]  /*API endpoint istek yapıldığında Response'de dönüş tipini görülüyor. Bundan dolayı Response body kısmında
                        tekrar StatusCode göremimize gerek yok. Fakat yazılım içinde bu propertie'ye ihtiyacımız var Response status dönüş tipini belirlerken.
                         [JsonIgnore] yazarak Response body kısmında göstermedik. Sadece kodlama yaparken biz görüyoruz.*/
-        public int StatusCode { get; private set; }
+        public int StatusCode { get; set; }
 
         [JsonIgnore]
-        public bool IsSuccessful { get; private set; }
+        public bool IsSuccessful { get; set; }
 
         public List<string> Errors { get; set; }
 
