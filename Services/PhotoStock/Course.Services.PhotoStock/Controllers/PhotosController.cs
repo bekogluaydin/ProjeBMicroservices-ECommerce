@@ -26,8 +26,7 @@ namespace Course.Services.PhotoStock.Controllers
                 using var stream = new FileStream(path, FileMode.Create);
                 await photo.CopyToAsync(stream, cancellationToken);
 
-                // http://technovadi.com/photos/myscherzo.png
-                var returnPath = "photos" + photo.FileName;
+                var returnPath = photo.FileName;
 
                 PhotoDto photoDto = new() { Url = returnPath };
 
