@@ -9,7 +9,7 @@ namespace Course.Web.Models
     {
         public string IdentityBaseUri { get; set; }
         public string GatewayBaseUri { get; set; }
-        public string PhotoStockUrl { get; set; }
+        public string PhotoStockUri { get; set; }
         public ServiceApi Catalog { get; set; }
         public ServiceApi PhotoStock { get; set; }
     }
