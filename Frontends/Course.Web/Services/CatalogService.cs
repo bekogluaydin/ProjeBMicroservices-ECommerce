@@ -49,7 +49,7 @@ namespace Course.Web.Services
             return responseSuccess.Data;
         }
 
-        public async Task<List<CategoryViewModel>> GettAllCategogoryAsync()
+        public async Task<List<CategoryViewModel>> GettAllCategoryAsync()
         {
             /*http://localhost:5000/services/catalog/categories */
 
