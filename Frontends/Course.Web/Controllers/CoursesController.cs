@@ -31,7 +31,6 @@ namespace Course.Web.Controllers
         public async Task<IActionResult> Create()
         {
             var categories = await _catalogService.GettAllCategoryAsync();
-
             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
 
             return View();
@@ -41,7 +40,6 @@ namespace Course.Web.Controllers
         public async Task<IActionResult> Create(CourseCreateInput courseCreateInput)
         {
             var categories = await _catalogService.GettAllCategoryAsync();
-
             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
 
             if (!ModelState.IsValid)
@@ -53,6 +51,47 @@ namespace Course.Web.Controllers
 
             await _catalogService.CreateCourseAsync(courseCreateInput);
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Update(string id)
+        {
+            var course = await _catalogService.GetByCourseIdAsync(id);
+            var categories = await _catalogService.GettAllCategoryAsync();
+            
+            if (course == null)
+            {
+                RedirectToAction(nameof(Index));
+            }
+
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name",course.Id);
+            CourseUpdateInput courseUpdateInput = new()
+            {
+                Id = course.Id,
+                Name = course.Name,
+                Description = course.Description,
+                Price = course.Price,
+                Feature = course.Feature,
+                CategoryId = course.CategoryId,
+                UserId = course.UserId,
+                Picture = course.Picture
+            };
+
+            return View(courseUpdateInput);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update (CourseUpdateInput courseUpdateInput)
+        {
+            var categories = await _catalogService.GettAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name", courseUpdateInput.Id);
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await _catalogService.UpdateCourseAsync(courseUpdateInput);
             return RedirectToAction(nameof(Index));
         }
     }
