@@ -1,4 +1,5 @@
-﻿using Course.Web.Models.PhotoStocks;
+﻿using Course.Shared.Dtos;
+using Course.Web.Models.PhotoStocks;
 using Course.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -52,7 +53,9 @@ namespace Course.Web.Services
                 return null;
             }
 
-            return await response.Content.ReadFromJsonAsync<PhotoViewModel>();
+            var responseSucces = await response.Content.ReadFromJsonAsync<Response<PhotoViewModel>>();
+
+            return responseSucces.Data;
         }
     }
 }
