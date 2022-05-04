@@ -27,6 +27,11 @@ namespace Course.Web.Controllers
             return View(await _catalogService.GetAllCourseAysnc());
         }
 
+        public async Task<IActionResult> CourseDetail(string id)
+        {
+            return View(await _catalogService.GetByCourseIdAsync(id));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
