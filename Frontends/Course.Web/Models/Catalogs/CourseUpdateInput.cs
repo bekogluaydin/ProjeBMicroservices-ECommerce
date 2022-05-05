@@ -12,15 +12,12 @@ namespace Course.Web.Models.Catalogs
         public string Id { get; set; }
 
         [Display(Name = "Kurs Adı")]
-        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Kurs Fiyatı")]
-        [Required]
         public decimal Price { get; set; }
 
         [Display(Name = "Kurs Açıklama")]
-        [Required]
         public string Description { get; set; }
 
         [Display(Name = "Kurs Fotoğraf")]
@@ -31,7 +28,6 @@ namespace Course.Web.Models.Catalogs
         public FeatureViewModel Feature { get; set; }
 
         [Display(Name = "Kurs  Kategori")]
-        [Required]
         public string CategoryId { get; set; }
 
         [Display(Name = "Kurs  Fotoğraf")]
