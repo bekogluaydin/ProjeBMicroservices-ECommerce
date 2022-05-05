@@ -47,7 +47,7 @@ namespace Course.Web.Services
 
             var basket = await Get();
 
-            if (basket==null || basket.DiscountCode == null)
+            if (basket==null)
             {
                 return false;
             }
