@@ -32,7 +32,7 @@
                     </tr>
                     }
 
-                    @if (Model.HasDiscount)
+                    @if (@Model.hasDiscount)
                     {
                         <tr>
                             <td>İndirim Oranı</td>
@@ -41,7 +41,7 @@
                     }
 
                     <tr>
-                        <td>@(Model.HasDiscount? "İndirimli Fiyat": "Toplam Fiyat")</td>
+                        <td>@(Model.hasDiscount? "İndirimli Fiyat": "Toplam Fiyat")</td>
                         <th colspan="2">@Model.TotalPrice TL</th>
                     </tr>
 
