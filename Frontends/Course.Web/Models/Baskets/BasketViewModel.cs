@@ -40,7 +40,7 @@ namespace Course.Web.Models.Baskets
 
         public bool hasDiscount
         {
-            get => !string.IsNullOrEmpty(DiscountCode);
+            get => !string.IsNullOrEmpty(DiscountCode) && DiscountRate.HasValue;
         }
     }
 }
