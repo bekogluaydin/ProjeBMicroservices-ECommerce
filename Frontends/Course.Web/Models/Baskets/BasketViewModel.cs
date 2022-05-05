@@ -19,7 +19,7 @@ namespace Course.Web.Models.Baskets
         {
             get
             {
-                if (hasDiscount)
+                if (HasDiscount)
                 {
                     // Örnek; kurs fiyat 100 TL indirim kodu %10
                     _basketItems.ForEach(x =>
@@ -38,7 +38,7 @@ namespace Course.Web.Models.Baskets
             get => _basketItems.Sum(x => x.GetCurrentPrice * x.Quantity);
         }
 
-        public bool hasDiscount
+        public bool HasDiscount
         {
             get => !string.IsNullOrEmpty(DiscountCode) && DiscountRate.HasValue;
         }
