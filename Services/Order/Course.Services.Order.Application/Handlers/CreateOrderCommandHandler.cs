@@ -24,7 +24,7 @@ namespace Course.Services.Order.Application.Handlers
 
         public async Task<Response<CreatedOrderDto>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var newAdress = new Adress(request.AdressDto.Province, request.AdressDto.District, request.AdressDto.Street, request.AdressDto.ZipCode, request.AdressDto.Line);
+            var newAdress = new Adress(request.Address.Province, request.Address.District, request.Address.Street, request.Address.ZipCode, request.Address.Line);
 
             Domain.OrderAggregate.Order newOrder = new Domain.OrderAggregate.Order(request.BuyerID, newAdress);
 
