@@ -65,7 +65,7 @@ namespace Course.Web.Services
                 var orderItem = new OrderItemCreateInput
                 {
                     ProductId = x.CourseId,
-                    Price = x.Price,
+                    Price = x.GetCurrentPrice,
                     PictureURL = "",
                     ProductName = x.CourseName
                 };
@@ -79,7 +79,11 @@ namespace Course.Web.Services
                 return new OrderCreatedViewModel() { Error = "Sipariş Oluşturulamadı", IsSuccessful = false };
             }
 
-           return await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+           var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+
+           orderCreatedViewModel.IsSuccessful = true;
+
+            return orderCreatedViewModel;
         }
 
         public async Task<List<OrderViewModel>> GetOrder()
