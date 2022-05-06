@@ -79,11 +79,13 @@ namespace Course.Web.Services
                 return new OrderCreatedViewModel() { Error = "Sipariş Oluşturulamadı", IsSuccessful = false };
             }
 
-           var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+           var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
 
-           orderCreatedViewModel.IsSuccessful = true;
+           orderCreatedViewModel.Data.IsSuccessful = true;
 
-            return orderCreatedViewModel;
+            await _basketService.Delete();
+
+            return orderCreatedViewModel.Data;
         }
 
         public async Task<List<OrderViewModel>> GetOrder()
