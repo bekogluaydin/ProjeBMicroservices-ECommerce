@@ -12,7 +12,7 @@ namespace Course.Web.Services.Interfaces
         Task<OrderCreatedViewModel> CreateOrder(CheckoutInfoInput checkoutInfoInput);
 
         //Asenskron iletişim - sipariş bilgileri rabbitMQ'ya gönderilecek.
-        Task SuspendOrder(CheckoutInfoInput checkoutInfoInput);
+        Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput);
 
         Task<List<OrderViewModel>> GetOrder();
     }
