@@ -1,5 +1,6 @@
 ﻿using Course.Services.Basket.Dtos;
 using Course.Shared.Dtos;
+using Mass = MassTransit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,12 @@ namespace Course.Services.Basket.Services
     {
         private readonly RedisService _redisService;
 
-        public BasketService(RedisService redisService)
+        private readonly Mass.IPublishEndpoint _publishEndpoint;
+
+        public BasketService(RedisService redisService, Mass.IPublishEndpoint publishEndpoint)
         {
             _redisService = redisService;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<Response<bool>> Delete(string userId)

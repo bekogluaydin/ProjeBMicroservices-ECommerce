@@ -3,11 +3,13 @@ using Course.Services.Catalog.Dtos;
 using Course.Services.Catalog.Models;
 using Course.Services.Catalog.Settings;
 using Course.Shared.Dtos;
+using Mass = MassTransit;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Course.Shared.Messages;
 
 namespace Course.Services.Catalog.Services
 {
@@ -18,7 +20,9 @@ namespace Course.Services.Catalog.Services
 
         private readonly IMapper _mapper;
 
-        public CourseService(IMapper mapper, IDatabaseSettings databaseSettings)
+        private readonly Mass.IPublishEndpoint _publishEndpoint;
+
+        public CourseService(IMapper mapper, IDatabaseSettings databaseSettings, Mass.IPublishEndpoint publishEndpoint)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
@@ -27,6 +31,8 @@ namespace Course.Services.Catalog.Services
             _categoryColleciton = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
 
             _mapper = mapper;
+
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<Response<List<CourseDto>>> GetAllAsync()
@@ -95,6 +101,12 @@ namespace Course.Services.Catalog.Services
             {
                 return Response<NoContent>.Fail("Course not found",404);
             }
+
+            await _publishEndpoint.Publish<CourseNameChangedEvent>(new CourseNameChangedEvent
+            {
+                CourseId = updateCourse.Id,
+                UpdateName = updateCourse.Name
+            });
 
             return Response<NoContent>.Success(204);
         }
