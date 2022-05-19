@@ -8,9 +8,9 @@ namespace Course.Services.Discount.Services
 {
     public interface IDiscountService
     {
-        Task<Response<List<Models.Discount>>> GettAll();
+        Task<Response<List<Models.Discount>>> GetAll();
 
-        Task<Response<Models.Discount>> GettById(int id);
+        Task<Response<Models.Discount>> GetById(int id);
         Task<Response<NoContent>> Save(Models.Discount discount);
         Task<Response<NoContent>> Update(Models.Discount discount);
         Task<Response<NoContent>> Delete(int id);

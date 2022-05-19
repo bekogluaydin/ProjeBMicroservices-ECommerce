@@ -24,12 +24,12 @@ namespace Course.Services.Discount.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GettAll() { return CreateActionResultInstance(await _discountService.GettAll()); }
+        public async Task<IActionResult> GetAll() { return CreateActionResultInstance(await _discountService.GetAll()); }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var discount = await _discountService.GettById(id);
+            var discount = await _discountService.GetById(id);
             return CreateActionResultInstance(discount);
         }
 

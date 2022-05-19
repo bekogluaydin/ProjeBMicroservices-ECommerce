@@ -41,23 +41,23 @@ namespace Course.Services.Discount.Services
             return hasDiscount == null ? Response<List<Models.Discount>>.Fail("Discount not found", 404) : Response<List<Models.Discount>>.Success(discounts.ToList(), 200);
         }
 
-        public async Task<Response<List<Models.Discount>>> GettAll()
+        public async Task<Response<List<Models.Discount>>> GetAll()
         {
             var discounts = await _dbConnection.QueryAsync<Models.Discount>("Select * from discount");
 
             return Response<List<Models.Discount>>.Success(discounts.ToList(), 200);
         }
 
-        public async Task<Response<Models.Discount>> GettById(int id)
+        public async Task<Response<Models.Discount>> GetById(int id)
         {
-            var discount = (await _dbConnection.QueryAsync<Models.Discount>("Select * from discount where id=@Id", new { Id=id})).SingleOrDefault();
+            var discount = (await _dbConnection.QueryAsync<Models.Discount>("Select * from discount where id=@Id", new { Id = id})).SingleOrDefault();
 
             return discount == null ? Response<Models.Discount>.Fail("Discount not found", 404) : Response<Models.Discount>.Success(discount, 200);
         }
 
         public async Task<Response<NoContent>> Save(Models.Discount discount)
         {
-            var saveStatus = await _dbConnection.ExecuteAsync("INSERT INTO discount (userid,rate,code) VALUES (@UserID,@Rate,@Code)", discount);
+            var saveStatus = await _dbConnection.ExecuteAsync("INSERT INTO discount (userid,rate,code) VALUES (@UserId,@Rate,@Code)", discount);
             
             return saveStatus > 0 ? Response<NoContent>.Success(204) : Response<NoContent>.Fail("an error accurred while adding", 500);
         }
