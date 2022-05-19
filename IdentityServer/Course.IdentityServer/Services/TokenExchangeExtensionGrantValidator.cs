@@ -20,7 +20,7 @@ namespace Course.IdentityServer.Services
         public async Task ValidateAsync(ExtensionGrantValidationContext context)
         {
             var requestRaw = context.Request.Raw.ToString();
-            var token = context.Request.Raw.Get("subject-token");
+            var token = context.Request.Raw.Get("subject_token");
 
             if (string.IsNullOrEmpty(token))
             {
@@ -45,6 +45,8 @@ namespace Course.IdentityServer.Services
             }
 
             context.Result = new GrantValidationResult(subjectClaim.Value, "access_token", tokenValidateResult.Claims);
+
+            return;
         }
     }
 }
