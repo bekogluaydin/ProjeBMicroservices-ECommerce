@@ -48,12 +48,12 @@
 
                     </table>
 
-                    @*<form asp-controller="Basket" asp-action="ApplyDiscount">
+                    <form asp-controller="Basket" asp-action="ApplyDiscount">
                             @if (Model.HasDiscount)
                             {
                                 <div class="alert alert-success">
                                     "@Model.DiscountCode" indirim kodu uygunlandı.
-                                    <a asp-controller="Basket" asp-action="CancelApplyDiscount"></a>
+                                    <a asp-controller="Basket" asp-action="CancelApplyDiscount">(iptal et)</a>
                                 </div>
                             }
 
@@ -71,7 +71,7 @@
                             {
                                 <div class="text-danger">@TempData["discountError"]</div>
                             }
-                        </form>*@
+                        </form>
                     <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Ödeme Bilgileri</a>
                     <a class="btn btn-warning" asp-controller="Home" asp-action="Index">Kurslara Göz at</a>
                 }
