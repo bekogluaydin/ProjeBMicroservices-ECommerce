@@ -46,24 +46,20 @@ namespace Course.Web.Services
             await CancelApplyDiscount();
 
             var basket = await Get();
-
-            if (basket==null)
+            if (basket == null)
             {
                 return false;
             }
 
             var hasDiscount = await _discountService.GetDiscount(discountCode);
-
             if (hasDiscount == null)
             {
                 return false;
             }
 
             basket.ApplyDiscount(hasDiscount.Code, hasDiscount.Rate);
-
             await SaveOrUpdate(basket);
             return true;
-
         }
 
         public async Task<bool> CancelApplyDiscount()

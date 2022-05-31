@@ -38,7 +38,7 @@ namespace Course.Web.Handler
             {
                 var tokenResponse = await _identityService.GetAccessTokenByRefreshToken();
 
-                if (tokenResponse!=null)
+                if (tokenResponse != null)
                 {
                     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tokenResponse.AccessToken);
 
